@@ -1,7 +1,8 @@
-# UAS Pemrograman Framework
+#UAS Pemrograman Framework
 Nama  : Nikmat Setiawan   2014150041
         Bayu Khairul A    2014150153
         Dian Arian Dwi C  2014150154
+
 
 untuk angular laravel
 1.composer instal
@@ -11,7 +12,8 @@ untuk angular laravel
 5.untuk login username  : nikmatsetiawan@gmail.com
               password  : 11223344
 
+
+
 untuk nativscript
 jalankan tns run android --emulator 
 atau tns run android
-        
