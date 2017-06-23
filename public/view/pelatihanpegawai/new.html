@@ -1,0 +1,78 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>{{header}}</h1>
+    </div>
+    <div class="panel-body">
+        <!-- pelatihanForm ketika button submit ditekan maka akan menjalankan fungsi processForm() -->
+        <form name="pelatihanForm" ng-submit="processForm(pelatihanForm.$valid)" novalidate>
+            <!-- 
+            Disini terdapat validasi yang dibuat memakai dengan angular , dimana class div akan berubah menjadai 'has-error'
+            ketika input nama nama_lokasi invalid dan kosong.    
+            -->
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.pelatihan.$invalid && pelatihanForm.pelatihan.$dirty || submitted && pelatihanForm.pelatihan.$invalid}">
+                <label for="pelatihan">Pelatihan</label>
+                <!-- Input pelatihan  -->
+                <select name="pelatihan" class="form-control" ng-model="statusData.id_master_pelatihan" required>
+                    <option value="">Pilih Pelatihan</option>
+                    <option ng-repeat="unit in latihan" ng-selected="{{unit.id == statusData.id_master_pelatihan}}" value="{{unit.id}}">{{unit.label}}</option>
+                </select> <!-- validasi input -->
+                <p ng-show="pelatihanForm.pelatihan.$invalid && pelatihanForm.pelatihan.$dirty || submitted && pelatihanForm.pelatihan.$invalid" class="help-block">Pelatihan Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.lokasi.$invalid && pelatihanForm.lokasi.$dirty || submitted && pelatihanForm.lokasi.$invalid}">
+                <label for="lokasi">Lokasi</label>
+                <!-- Input lokasi  -->
+                <select name="lokasi" class="form-control" ng-model="statusData.lokasi" required>
+                    <option value="">Pilih Lokasi</option>
+                    <option ng-repeat="unit in lokasi" ng-selected="{{unit.id == statusData.lokasi}}" value="{{unit.id}}">{{unit.label}}</option>
+                </select> <!-- validasi input -->
+                <p ng-show="pelatihanForm.lokasi.$invalid && pelatihanForm.lokasi.$dirty || submitted && pelatihanForm.lokasi.$invalid" class="help-block">Lokasi Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.uraian.$invalid && pelatihanForm.uraian.$dirty || submitted && pelatihanForm.uraian.$invalid}">
+                <label for="uraian">Uraian</label>
+                <!-- Input uraian  -->
+                <textarea class="form-control" ng-model="statusData.uraian" name="uraian" placeholder="Masukan nama uraian"></textarea>
+                <!-- validasi input -->
+                <p ng-show="pelatihanForm.uraian.$invalid && pelatihanForm.uraian.$dirty || submitted && pelatihanForm.uraian.$invalid" class="help-block">Uraian Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.tanggal_sertifikat.$invalid && pelatihanForm.tanggal_sertifikat.$dirty || submitted && pelatihanForm.tanggal_sertifikat.$invalid}">
+                <label for="tanggal_sertifikat">Tanggal Pelatihan</label>
+                <!-- Input tanggal_sertifikat  -->
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="dd/mm/yyyy"
+                       datepicker-popup="dd/MM/yyyy" 
+                       ng-model="statusData.tanggal_sertifikat" 
+                       is-open="opened" 
+                       datepicker-options="dateOptions"  
+                       ng-required="true" 
+                       close-text="Close" 
+                       ng-click="opened = true"
+                       max-date="maxDate"
+                       name="tanggal_sertifikat"
+                       required
+                       date-validator
+                       />
+                <!-- validasi input -->
+                <p ng-show="pelatihanForm.tanggal_sertifikat.$invalid && pelatihanForm.tanggal_sertifikat.$dirty || submitted && pelatihanForm.tanggal_sertifikat.$invalid" class="help-block">Tanggal Pelatihan Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.jam_pelatihan.$invalid && pelatihanForm.jam_pelatihan.$dirty || submitted && pelatihanForm.jam_pelatihan.$invalid}">
+                <label for="jam_pelatihan">Jam Pelatihan</label>
+                <!-- Input jam_pelatihan  -->
+                <input type="text" class="form-control" ng-model="statusData.jam_pelatihan" name="jam_pelatihan" placeholder="Masukan nama jam_pelatihan" required>
+                <!-- validasi input -->
+                <p ng-show="pelatihanForm.jam_pelatihan.$invalid && pelatihanForm.jam_pelatihan.$dirty || submitted && pelatihanForm.jam_pelatihan.$invalid" class="help-block">Jam Pelatihan Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-6" ng-class="{ 'has-error' : pelatihanForm.negara.$invalid && pelatihanForm.negara.$dirty || submitted && pelatihanForm.negara.$invalid}">
+                <label for="negara">Negara</label>
+                <!-- Input negara  -->
+                <input type="text" class="form-control" ng-model="statusData.negara" name="negara" placeholder="Masukan nama negara" required>
+                <!-- validasi input -->
+                <p ng-show="pelatihanForm.negara.$invalid && pelatihanForm.negara.$dirty || submitted && pelatihanForm.negara.$invalid" class="help-block">Negara Diperlukan.</p>
+            </div>
+            <div class="form-group col-sm-12">
+                <button type="submit" class="btn btn-default">Submit</button>
+                <a class="btn btn-default btn-warning" href="backend/pegawai/edit/{{idpegawai}}/pelatihanpegawai" role="button">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
